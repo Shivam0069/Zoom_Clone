@@ -1,3 +1,5 @@
+import DateTime from "@/components/DateTime";
+import MeetingTypeList from "@/components/MeetingTypeList";
 import React from "react";
 
 export default function Home() {
@@ -16,12 +18,10 @@ export default function Home() {
           <h2 className="glassmorphism max-w-[270px] rounded py-2 text-center text-base font-normal ">
             Upcoming Meeting at 12:30 PM
           </h2>
-          <div className="flex flex-col gap-2">
-            <h1 className="text-4xl lg:text-7xl font-extrabold">{time}</h1>
-            <p className="text-lg lg:text-2xl font-medium text-sky-1">{date}</p>
-          </div>
+          <DateTime />
         </div>
       </div>
+      <MeetingTypeList />
     </section>
   );
 }
