@@ -36,7 +36,9 @@ export default function MobileNav() {
               height={32}
               className="max-sm:size-10"
             />
-            <p className="text-[26px] font-extrabold text-white ">Let's Meet</p>
+            <p className="text-[26px] font-extrabold text-white ">
+              Let&apos;s Meet
+            </p>
           </Link>
           <div className="flex flex-col h-[calc(100vh-72px)] overflow-y-auto justify-between">
             <SheetClose asChild>
