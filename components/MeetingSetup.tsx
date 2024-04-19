@@ -27,10 +27,13 @@ export default function MeetingSetup({
   }, [isMicCamToggledOn, call?.camera, call?.microphone]);
   return (
     <div className="flex flex-col justify-center items-center gap-3 text-white h-screen w-full">
-      <h1 className="font-bold text-2xl">Setup</h1>
-      <VideoPreview />
+      <h1 className="font-bold text-2xl mt-10">Setup</h1>
+      <VideoPreview
+      // mirror={true}
+      // className="max-h-[500px] max-w-[500px] md:max-w-[700px] md:max-h-[700px]  border mx-2 md:mx-auto"
+      />
       <div className="flex h-16 items-center justify-center gap-3">
-        <label className="flex-center gap-2 font-medium">
+        <label className="flex-center gap-2 font-medium px-4 text-sm">
           <input
             type="checkbox"
             checked={isMicCamToggledOn}
