@@ -22,9 +22,20 @@ import { LayoutList, Users } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import EndCallButton from "./EndCallButton";
 import Loader from "./Loader";
+import { useUser } from "@clerk/nextjs";
+import { useGetCallById } from "@/hooks/useGetCallById";
+import { Button } from "./ui/button";
+import { useToast } from "./ui/use-toast";
 
 type CallLayoutType = "grid" | "speaker-left" | "speaker-right";
 export default function MeetingRoom() {
+  const { user } = useUser();
+  const { toast } = useToast();
+
+  const meetingId = user?.id;
+
+  const { call } = useGetCallById(meetingId!);
+  const meetingLink = `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${meetingId}`;
   const router = useRouter();
   const searchParams = useSearchParams();
   const isPersonalRoom = !!searchParams.get("personal");
@@ -88,6 +99,17 @@ export default function MeetingRoom() {
             <Users size={20} className="text-white" />
           </div>
         </button>
+        <Button
+          className="bg-dark-3"
+          onClick={() => {
+            navigator.clipboard.writeText(meetingLink);
+            toast({
+              title: "Link Copied",
+            });
+          }}
+        >
+          Copy Link
+        </Button>
         {!isPersonalRoom && <EndCallButton />}
       </div>
     </section>
